@@ -142,7 +142,7 @@ int main(){
 }
 
 
-/*bitio.cc with debuc std::cout lines:
+/*bitio.cc with debuc std::cout lines for debugging:
 
 #include "bitio.hh"
 #include <cassert>

@@ -6,6 +6,7 @@
 
 #include <algorithm>
 #include "hforest.hh"
+#include <cassert>
 
 //////////////////////////////////////////////////////////////////////////////
 // Comparator function for std::*_heap

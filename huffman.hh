@@ -7,8 +7,8 @@
 
 #include <climits>
 #include <vector>
-
-#include "htree.hh"
+#include "hforest.hh"
+//#include "htree.hh"
 
 class Huffman {
  public:
@@ -19,7 +19,7 @@ class Huffman {
 	using bits_t = std::vector<bool>;
 
 	Huffman();
-	~Huffman();
+	//~Huffman();
 	Huffman(const Huffman&) = delete;
 	Huffman(Huffman&&) = delete;
 	Huffman& operator=(const Huffman&) = delete;
@@ -36,5 +36,10 @@ class Huffman {
 	int decode(bool bit);
 
 	private:
-		std::vector<int> freq_(257);
+		std::vector<int> freq_;
+		HForest::tree_t decoding_tree_;
+
+		HForest::tree_t planter();
+	
+	//friend std::shared_ptr<HForest> planter(std::shared_ptr<Huffman> huff);
 };

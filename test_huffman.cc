@@ -39,9 +39,19 @@ void test_encode(){
 int decode_symbol(Huffman& huff, const Huffman::bits_t& bits){
 	int symbol = -1;
 
+/*	std::cout << "bit string: ";
 	for (auto b : bits) {
-	symbol = huff.decode(b);
+		std::cout << b;
 	}
+	std::cout << std::endl << std::endl;
+*/
+	for (auto b : bits) {
+//		std::cout << "bit is " << b << std::endl;
+		symbol = huff.decode(b);
+//		std::cout <<std::endl << std::endl;
+	}
+//		std::cout << "symbol decoded: " << symbol << std::endl << std::endl;
+	//std::cout << (char)97;
 	assert(symbol >= 0);
 	return symbol;
 }
@@ -54,19 +64,45 @@ void test_decode(){
 
 	auto bits = encoder.encode('a');
 	assert(decode_symbol(decoder, bits) == 'a');
+	//std::cout << "decoded " << decode_symbol(decoder, bits) << std::endl;
 	bits = encoder.encode('a');
 	assert(decode_symbol(decoder, bits) == 'a');
 	bits = encoder.encode('b');
 	assert(decode_symbol(decoder, bits) == 'b');
 	bits = encoder.encode('a');
 	assert(decode_symbol(decoder, bits) == 'a');
+	bits = encoder.encode('j');
+	assert(decode_symbol(decoder, bits) == 'j');
+	bits = encoder.encode('j');
+	assert(decode_symbol(decoder, bits) == 'j');
+	bits = encoder.encode('k');
+	assert(decode_symbol(decoder, bits) == 'k');
+	bits = encoder.encode('l');
+	assert(decode_symbol(decoder, bits) == 'l');
+	bits = encoder.encode('h');
+	assert(decode_symbol(decoder, bits) == 'h');
+	bits = encoder.encode('e');
+	assert(decode_symbol(decoder, bits) == 'e');
 	bits = encoder.encode(Huffman::HEOF);
 	assert(decode_symbol(decoder, bits) == Huffman::HEOF);
+
+	std::vector<bool> many_zeros;
+	while(many_zeros.size() < 40){
+		many_zeros.push_back(0);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////////
 int main(){
+	/*
+	int* test = nullptr;
+	std::cout << test << std::endl;
+	int test_int = 'a';
+	std::cout << test_int << std::endl;
+	*/
+	//Huffman test_huff;
 	test_encode();
+//	std::cout << "encoding test over ################################################################################" << std::endl << std::endl;
 	test_decode();
 	return 0;
 }

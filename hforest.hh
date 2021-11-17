@@ -24,7 +24,7 @@ class HForest {
 		// Add a single tree to the forest:
 		void add_tree(tree_t);
 
-		// Return the tree with the lowest priority (and remove it from forest)
+		// Return the tree with the highest frequency (and remove it from forest)
 		tree_t pop_top();
 
 	private:
